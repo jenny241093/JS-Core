@@ -1,6 +1,6 @@
 function calorieObj(arr) {
  
-    let sentence = '{ ';
+    let sentence = '{';
 for (let index = 0; index < arr.length; index++) {
    if (index%2==0) {
       sentence+=' '+arr[index]+':'; 

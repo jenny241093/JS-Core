@@ -1,20 +1,15 @@
 function extract(arr) {
  
-    arr = arr.map(Number);
-    let result = [arr[0]];
-    let biggestNumber = [arr[0]];
+   let min = 0;
+   let result = arr.reduce((acc,el)=>{
+       if (el>=min) {
+           acc.push(el);
+           min = el;
+       }
+       return acc;
+   },[]);
  
-    for (let i = 1; i < arr.length; i++) {
- 
-        let currentNumber =arr[i];
- 
-        if (currentNumber >= biggestNumber) {
-            result.push(currentNumber);
-            biggestNumber = currentNumber;
-        }
-    }
- 
-    return(result.join('\n'));
+    console.log((result.join('\n')));
 }extract([1, 
     3, 
     8, 

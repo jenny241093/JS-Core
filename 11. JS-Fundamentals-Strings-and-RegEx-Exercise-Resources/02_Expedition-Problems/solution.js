@@ -5,7 +5,6 @@ function solve() {
   let messagePattern =RegExp(`${inputStr}(.+?)${inputStr}`, "g");
   let coordinatesPattern = /(north|east).*?([0-9]{2})[^,]*?,[^,]*?([0-9]{6})/ig;
  let decodedMessage = messagePattern.exec(inputText);
- console.log(decodedMessage);
   let east;
   let north;
   let message;
@@ -17,10 +16,6 @@ function solve() {
       east = `${m[2]}.${m[3]} E`;
     }
   };
-
-console.log(east);
-console.log(north);
-console.log(message);
 
 
 if (decodedMessage !== null) {

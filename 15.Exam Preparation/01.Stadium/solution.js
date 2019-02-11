@@ -1,51 +1,52 @@
 function solve() {
     let buttons = document.getElementsByClassName('seat');
     let obj = {
-        "Levski": {
+        'Levski': {
             'A': 10,
             'B': 7,
             'C': 5
         },
-        "Litex": {
+        'Litex': {
             'A': 10,
             'B': 7,
             'C': 5
         },
-        "VIP": {
+        'VIP': {
             'A': 25,
             'B': 15,
             'C': 10
         },
-        "__summary__": {
+        'summary': {
             'fans': 0,
-            'totalProfit': 0,
+            'profit': 0
         }
     }
     Array.from(buttons).forEach((btn) => {
         btn.addEventListener('click', clickEvent);
     })
-    document.getElementById('summary').addEventListener('click', summary);
-
-    function summary() {
-        let span = document.getElementsByTagName('span')[0];
-        span.innerHTML = `${obj.__summary__.totalProfit} leva, ${obj.__summary__.fans} fans.`;
-    }
+    let summaryBtn = document.getElementById('summary').addEventListener('click', summary);
+    let output = document.getElementById('output');
+    let result = document.getElementsByTagName('span')[0];
 
     function clickEvent(e) {
-
         let seat = e.target;
-        let zone = seat.parentNode.parentNode.parentNode.parentNode.parentNode.className;
+        let team = seat.parentNode.parentNode.parentNode.parentNode.parentNode.className;
         let sector = String.fromCharCode(65 + e.target.parentNode.cellIndex);
 
-        let area = document.getElementById('output');
         if (seat.style.backgroundColor === '') {
             seat.style.backgroundColor = "rgb(255,0,0)";
-            area.value += ` Seat ${seat.innerHTML} in zone ${zone} sector ${sector} was taken.\n`;
-            obj.__summary__.totalProfit += obj[zone][sector];
-            obj.__summary__.fans++;
+            obj.summary.profit += obj[team][sector];
+            obj.summary.fans++;
+            output.innerHTML += ` Seat ${seat.innerHTML} in zone ${team} sector ${sector} was taken.\n`;
 
         } else {
-            area.value += ` Seat ${seat.innerHTML} in zone ${zone} sector ${sector} is unavailable.\n`;
+            output.innerHTML += ` Seat ${seat.innerHTML} in zone ${team} sector ${sector} is unavailable.\n`;
+
         }
+
+    }
+
+    function summary() {
+        result.innerHTML = `${obj.summary.profit} leva, ${obj.summary.fans} fans.`
     }
 }

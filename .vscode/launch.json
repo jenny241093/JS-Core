@@ -11,11 +11,11 @@
             "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
             "args": [
                 "-u",
-                "tdd",
+                "bdd",
                 "--timeout",
                 "999999",
                 "--colors",
-                "${workspaceFolder}/02.JSAdvanced/05.JS-Classes/"
+                "${workspaceFolder}/02.JSAdvanced/06.JS-ClassesExercise/"
             ],
             "internalConsoleOptions": "openOnSessionStart"
         },

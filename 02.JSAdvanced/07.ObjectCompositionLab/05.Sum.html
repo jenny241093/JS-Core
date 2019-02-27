@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+
+<body>
+    <input type="text" id="num1" />
+    <input type="text" id="num2" />
+    <input type="text" id="result" readonly />
+    <br>
+    <button id="sumButton">
+    Sum</button>
+    <button id="subtractButton">
+    Subtract</button>
+</body>
+<script>
+    let domManipulator = (function() {
+        let firstElement;
+        let secondElement;
+        let resultElement;
+        return {
+            init: (selector1, selector2, resultSelector) => {
+                firstElement = document.querySelector(selector1);
+                secondElement = document.querySelector(selector2);
+                resultElement = document.querySelector(resultSelector);
+
+            },
+            add: () => {
+                resultElement.value = Number(firstElement.value) + Number(secondElement.value);
+            },
+            subtract: () => {
+                resultElement.value = Number(firstElement.value) - Number(secondElement.value);
+            }
+        };
+    })();
+    domManipulator.init('#num1', '#num2', '#result');
+    let someBtn = document.querySelector('#sumButton');
+    someBtn.addEventListener('click', domManipulator.add);
+    let sub = document.querySelector('#subtractButton');
+    sub.addEventListener('click', domManipulator.subtract);
+</script>
+
+</html>

@@ -1,7 +1,4 @@
 function attachEvents() {
-<<<<<<< HEAD
-    // TODO:
-=======
     $('a.button').on('click', buttonClicked);
 
     function buttonClicked() {
@@ -10,5 +7,4 @@ function attachEvents() {
         // "this" is the event source (the hyperlink clicked)
     }
 
->>>>>>> bab0fb2bcae2b3cb3194b5b49ea999b48e380af6
 }

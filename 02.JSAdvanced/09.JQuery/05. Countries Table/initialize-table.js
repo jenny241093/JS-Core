@@ -1,7 +1,4 @@
 function initializeTable() {
-<<<<<<< HEAD
-    // TODO:
-=======
     $('#createLink').click(addCountry);
     fixLinks();
 
@@ -56,5 +53,4 @@ function initializeTable() {
     createCountry('Germany ', 'Berlin');
     createCountry('Russia', 'Moscow');
 
->>>>>>> bab0fb2bcae2b3cb3194b5b49ea999b48e380af6
 }

@@ -1,7 +1,4 @@
 function attachEvents() {
-<<<<<<< HEAD
-	// TODO:
-=======
     // TODO:
     let townsArr = [];
 
@@ -28,5 +25,4 @@ function attachEvents() {
         $('#selectedTowns').text(townsArr.join(', '));
     }
 
->>>>>>> bab0fb2bcae2b3cb3194b5b49ea999b48e380af6
 }

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sections</title>
+  <style>
+    #content {
+      width: 1000px;
+    }
+
+    #content div {
+      float: left;
+      width: 300px;
+      height: 300px;
+      margin: 2em;
+      background: #5555ff;
+      text-align: center;
+    }
+
+    #content div p {
+      color: white;
+      margin: 6em 3em 6em 3em;
+    }
+  </style>
+</head>
+<div id="content">
+</div>
+<body onload="create(['Section 1', 'Section 2', 'Section 3', 'Section 4']);">
+<script>
+
+    function create(inputArr){
+        let contentDiv = document.querySelector("#content");
+    
+        Array.from(inputArr).forEach((el) => {
+            let divElement = document.createElement("div");
+            
+            let paragraphElement = document.createElement("p");
+            paragraphElement.textContent = el;
+            paragraphElement.style.display = "none";
+    
+            divElement.appendChild(paragraphElement);
+            
+            divElement.addEventListener("click", function(e){
+                let paragraph = Array.from(e.target.children)[0];
+                paragraph.style.display = "block";
+            });
+    
+            contentDiv.appendChild(divElement);
+        });
+    }
+</script>
+</body>
+</html>

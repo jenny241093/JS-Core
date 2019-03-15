@@ -15,7 +15,7 @@
                 "--timeout",
                 "999999",
                 "--colors",
-                "${workspaceFolder}/02.JSAdvanced/06.JS-ClassesExercise/"
+                "${workspaceFolder}/02.JSAdvanced/13.JSAdvancedExam18.11.2018/02.SoftUnify/"
             ],
             "internalConsoleOptions": "openOnSessionStart"
         },

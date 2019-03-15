@@ -1,28 +1,23 @@
 function solution() {
-    // TODO
+    let section = $('#christmasGiftShop');
+    let toyType = $('#toyType');
+    let toyPrice = $('#toyPrice');
+    let toyDescription = $('#toyDescription');
+    if (toyType.val() && +toyPrice.val() && toyDescription.val()) {
+        let newDiv = $('<div>', { 'class': 'gift' });
+        let img = $('<img src="gift.png" />');
+        let h2 = $('<h2>');
+        let p = $('<p>');
+        let buyBtn = $('<button>');
+        h2.text(toyType.val());
+        p.text(toyDescription.val());
+        buyBtn.text(`Buy it for $${toyPrice.val()}`);
 
-    let addBtn = document.getElementsByTagName('button')[0];
-    addBtn.addEventListener('click', addGift);
-
-    function addGift() {
-        let toyType = $('#toyType').val();
-        let toyPrice = Number($('#toyPrice').val());
-        let toyDescription = $('#toyDescription').val();
-        let section = $('#christmasGiftShop');
-        if (!toyType.lenght || !isNaN(toyPrice) || !toyDescription.lenght < 50) {
-
-            let div = $('<div>').addClass('gift');
-            let h2 = $(`<h2>${toyType}</h2>`);
-            let p = $(`<p>${toyDescription}</p>`)
-            let btn = $(`<button>Buy it for $${toyPrice}</button>`)
-            section.append(div);
-            div.append("<img src='gift.png'>");
-            div.append(h2);
-            div.append(p);
-            div.append(btn);
-            btn.on('click', function() {
-                $(this).parent().hide();
-            })
-        }
-    }
+        section.append(newDiv);
+        newDiv.append(img).append(h2, p, buyBtn);
+        buyBtn.on('click', () => newDiv.remove());
+    };
+    toyType.val("");
+    toyPrice.val("");
+    toyDescription.val("");
 }

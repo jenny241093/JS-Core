@@ -15,7 +15,7 @@
                 "--timeout",
                 "999999",
                 "--colors",
-                "${workspaceFolder}/02.JSAdvanced/15.JSAdvancedRetakeExam30.08.2018/02.HolidayPackage/"
+                "${workspaceFolder}/02.JSAdvanced/16.JSAdvancedExam17.03/02.Problem/"
             ],
             "internalConsoleOptions": "openOnSessionStart"
         },

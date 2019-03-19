@@ -7,7 +7,7 @@ describe("HolidayPackage", function() {
         holidayPackage = new HolidayPackage('Italy', 'Summer');
     });
 
-    describe("insurance value ", function() {
+    describe("makeMovie()", function() {
         it("should be false by default", function() {
             assert.equal(holidayPackage.insuranceIncluded, false);
         });

@@ -1,5 +1,3 @@
 function loadTitle() {
-    $.get("text.html", (res) => {
-        $("#text").html(res);
-    });
+    $('#text').load("text.html");
 }

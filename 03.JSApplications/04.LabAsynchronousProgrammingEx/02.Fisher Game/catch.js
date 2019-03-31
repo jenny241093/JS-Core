@@ -2,8 +2,7 @@ function attachEvents() {
     let baseUrl = `https://baas.kinvey.com/appdata/kid_rJP-cWMdE/`;
     $(`.load`).on('click', loadAllCatches);
     $(`.add`).on('click', addNewCatch);
-    $(`.update`).on('click', updateCatch);
-    $("#catches .catch .delete").on('click', deleteCatch);
+    
 
     const kinveyUsername = 'guest';
     const kinveyPassword = 'guest';
@@ -11,7 +10,7 @@ function attachEvents() {
     const authHeaders = { 'Authorization': 'Basic ' + base64auth };
     async function loadAllCatches() {
         console.log('load');
-
+        $('#catches').empty();
 
         try {
             let catches = await $.ajax({
@@ -19,28 +18,32 @@ function attachEvents() {
                 url: baseUrl + 'biggestCatches',
                 headers: authHeaders
             });
-            for (const c of catches) {
-                console.log(c);
-
-                let divCatch = $(`<div class="catch" data-id=${c._id}>
-                <label>Angler</label>
-                <input type="text" class="angler" value=${c.angler}>
-                <label>Weight</label>
-                <input type="number" class="weight" value=${c.weight}>
-                <label>Species</label>
-                <input type="text" class="species" value=${c.species}>
-                <label>Location</label>
-                <input type="text" class="location"  value=${c.location}>
-                <label>Bait</label>
-                <input type="text" class="bait"  value=${c.bait}>
-                <label>Capture Time</label>
-                <input type="number" class="captureTime"  value=${c.captureTime}>
-                <button class="update">Update</button>
-                <button class="delete">Delete</button>
-            </div>`);
-                $('#catches').append(divCatch);
+            
+            for (const currentCatch of catches) {
+                const $appendCatch = $(`
+                <div class="catch" data-id="${currentCatch._id}">
+                    <label>Angler</label>
+                    <input type="text" class="angler" value="${currentCatch.angler}"/>
+                    <label>Weight</label>
+                    <input type="number" class="weight" value="${currentCatch.weight}"/>
+                    <label>Species</label>
+                    <input type="text" class="species" value="${currentCatch.species}"/>
+                    <label>Location</label>
+                    <input type="text" class="location" value="${currentCatch.location}"/>
+                    <label>Bait</label>
+                    <input type="text" class="bait" value="${currentCatch.bait}"/>
+                    <label>Capture Time</label>
+                    <input type="number" class="captureTime" value="${currentCatch.captureTime}"/>
+                    <button class="update">Update</button>
+                    <button class="delete">Delete</button>
+                </div>
+                `);
+    
+                $('.delete').on('click', deleteCatch);
+                $('.update').on('click', updateCatch);
+    
+                $('#catches').append($appendCatch);
             }
-
 
         } catch (error) {
             console.log(error);
@@ -53,11 +56,11 @@ function attachEvents() {
         try {
 
             let angler = $('#addForm > .angler').val();
-            let weight = $('#addForm > .weight').val();
+            let weight = +$('#addForm > .weight').val();
             let species = $('#addForm > .species').val();
             let location = $('#addForm > .location').val();
             let bait = $('#addForm > .bait').val();
-            let captureTime = $('#addForm > .captureTime').val();
+            let captureTime = +$('#addForm > .captureTime').val();
             let data = {
                 captureTime,
                 bait,
@@ -80,60 +83,54 @@ function attachEvents() {
 
         }
     }
-    async function deleteCatch() {
+    async function deleteCatch(e) {
         console.log('del');
 
-        let catchId = $(e.target).parent().attr("data-id");
-
-        try {
+        let catchId = $(e.target).parent().data("id");
             await $.ajax({
                 type: "DELETE",
                 url: baseUrl + 'biggestCatches/' + catchId,
-                headers: authHeaders,
-                contentType: 'application/json',
-                data: JSON.stringify(data)
-            });
-            loadAllCatches();
-        } catch (error) {
+                headers: authHeaders
 
-        }
+            });
+            
+        loadAllCatches();
 
     }
     async function updateCatch(e) {
 
-        let catchId = $(e.target).parent().attr("data-id");
+        let catchId = $(e.target).parent().data("id");
+        console.log($(e.target).parent());
+        
         console.log('id', catchId);
 
-        try {
-            let catchId = 0;
-            let angler = $('.catch > .angler').val();
-            let weight = $('.catch > .weight').val();
-            let species = $('.catch > .species').val();
-            let location = $('.catch > .location').val();
-            let bait = $('.catch > .bait').val();
-            let captureTime = $('.catch > .captureTime').val();
-            let data = {
-                captureTime,
-                bait,
-                location,
-                species,
+            let angler =$(this).parent().find('input.angler').val();
+            let weight =+$(this).parent().find('input.weight').val();
+            let species = $(this).parent().find('input.species').val();
+            let location = $(this).parent().find('input.location').val();
+            let bait =$(this).parent().find('input.bait').val();
+            let captureTime =+$(this).parent().find('input.captureTime').val();
+            let data ={
+                angler,
                 weight,
-                angler
+                species,
+                location,
+                bait,
+                captureTime
             };
-            await $.ajax({
-                type: "PUT",
-                url: baseUrl + 'biggestCatches/' + catchId,
-                headers: authHeaders,
-                contentType: 'application/json',
-                data: JSON.stringify(data)
-            });
-
-
-
-        } catch (error) {
-            console.log(error);
-
-        }
+            try {
+                await $.ajax({
+                    type: "PUT",
+                    url: baseUrl + 'biggestCatches/' + catchId,
+                    headers: authHeaders,
+                    contentType: 'application/json',
+                    data: JSON.stringify(data)
+                });
+            } catch (error) {
+                console.log(error);
+                
+            }
+       loadAllCatches();
     }
 
 }

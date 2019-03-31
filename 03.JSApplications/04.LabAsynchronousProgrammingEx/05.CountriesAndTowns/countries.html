@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Biggest Catch</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="countries.js"></script>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        input {
+            display: block;
+        }
+
+        div {
+            border: 1px solid black;
+            padding: 5px;
+            display: inline-table;
+            width: 24%;
+        }
+
+        div#aside {
+            margin-top: 8px;
+            width: 15%;
+            border: 2px solid grey;
+        }
+
+        div#countries {
+            width: auto;
+        }
+
+        button {
+            display: inline-table;
+            margin: 5% 0 5% 5%;
+            width: 39%;
+        }
+
+        button.add {
+            width: 90%;
+        }
+
+        button.load {
+            width: 90%;
+            padding: 10px;
+        }
+
+        button.load {
+            vertical-align: top;
+        }
+
+        button.cities {
+            vertical-align: top;
+        }
+
+        fieldset {
+            display: inline-table;
+            vertical-align: top;
+        }
+
+        fieldset#main {
+            width: 70%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Countries And Cities</h1>
+    <fieldset id="main">
+        <legend>Countries</legend>
+        <div id="countries">
+            <div class="country" data-id="<id-goes-here>">
+                <label>Country</label>
+                <input type="text" class="country" />
+                <label>City</label>
+                <input type="text" class="city" />
+                <button class="update">Update</button>
+                <button class="delete">Delete</button>
+                <button class="cities">List Cities</button>
+            </div>
+        </div>
+    </fieldset>
+    <div id="aside">
+        <button class="load">Load</button>
+        <fieldset id="addForm">
+            <legend>Add Country</legend>
+            <label>Country</label>
+            <input type="text" class="country" />
+            <label>City</label>
+            <input type="text" class="city" />
+            <button class="add">Add</button>
+        </fieldset>
+    </div>
+    <script>
+        attachEvents()
+    </script>
+</body>
+
+</html>

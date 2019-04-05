@@ -1,0 +1,16 @@
+  <section>
+    <h1>Most popular monkeys</h1>
+    <div class="monkeys"> 
+        {{#each monkeys}}
+              <div class="monkey">
+        <h2>Chim Chim</h2>
+        <img src="{{image}}">
+        <button>Info</button>
+        <p style="display: none" id="{{id}}">
+         {{info}}
+        </p>
+      </div>  
+        {{/each}}
+  
+    </div>
+  </section>

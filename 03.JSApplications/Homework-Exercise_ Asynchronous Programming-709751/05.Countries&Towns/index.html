@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Countries&Towns</title>
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <link href="http://code.jquery.com/ui/jquery-ui-git.css" rel="stylesheet">
+<!--    <script type="text/javascript" src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>-->
+<!--    <script src="http://code.jquery.com/jquery-git.js"></script>-->
+    <script src="http://code.jquery.com/ui/jquery-ui-git.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div id="create">
+    <h2>Create Country</h2>
+    <label for="name">Name:</label>
+    <input id="name" type="text">
+    <button onclick="createCountry()">Create</button>
+</div>
+    <div id="accordion" data-role="collapsible-set"/>
+
+    </div>
+<script type="text/javascript">
+    loadCountries();
+</script>
+</body>
+</html>

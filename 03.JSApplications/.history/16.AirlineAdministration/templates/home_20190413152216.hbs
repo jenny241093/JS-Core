@@ -1,0 +1,19 @@
+{{>header}}
+{{#if isAuth}}
+    <section id="viewCatalog" class="background-img">
+            <a href="#/addFlight" class="add-flight">Add Flight +</a>
+
+            <div class="added-flights">
+                {{#each flights}}
+                    
+                {{/each}}
+                <a href="" class="added-flight">
+                    <img src={{imageUrl}}>
+                    <h3>{{origin}}</h3>
+                    <span>from {{destination}}</span><span>{{departureDate}}</span>
+                </a>
+            </div>
+        </section>
+{{/if}}
+        
+{{>footer}}
